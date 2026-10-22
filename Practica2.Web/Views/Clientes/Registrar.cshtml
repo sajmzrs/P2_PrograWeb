@@ -1,0 +1,34 @@
+@model ClienteModel
+@{
+    ViewData["Title"] = "Registro de Clientes";
+}
+
+<h2>Registro de Clientes</h2>
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Registrar" method="post">
+            <div class="mb-3">
+                <label asp-for="Cedula" class="form-label"></label>
+                <input asp-for="Cedula" class="form-control" />
+                <span asp-validation-for="Cedula" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Nombre" class="form-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Correo" class="form-label"></label>
+                <input asp-for="Correo" class="form-control" />
+                <span asp-validation-for="Correo" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Registrar</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

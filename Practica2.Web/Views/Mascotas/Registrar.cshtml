@@ -1,0 +1,46 @@
+@model MascotaModel
+@{
+    ViewData["Title"] = "Registro de Mascotas";
+}
+
+<h2>Registro de Mascotas</h2>
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Registrar" method="post">
+            <div class="mb-3">
+                <label asp-for="Nombre" class="form-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Especie" class="form-label"></label>
+                <input asp-for="Especie" class="form-control" />
+                <span asp-validation-for="Especie" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Raza" class="form-label"></label>
+                <input asp-for="Raza" class="form-control" />
+                <span asp-validation-for="Raza" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Peso" class="form-label"></label>
+                <input asp-for="Peso" class="form-control" type="number" step="0.01" min="0.01" />
+                <span asp-validation-for="Peso" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="IdCliente" class="form-label"></label>
+                <select asp-for="IdCliente" asp-items="ViewBag.Clientes" class="form-select">
+                    <option value="">-- Seleccione un cliente --</option>
+                </select>
+                <span asp-validation-for="IdCliente" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Registrar</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}
